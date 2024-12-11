@@ -49,24 +49,4 @@ public class DifficultyHandler {
 			}
 		}
 	}
-
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public void showDifficulty(RenderGameOverlayEvent.Post e) {
-		if(e.isCancelable() || e.getType() != ElementType.EXPERIENCE)
-			return;
-		DifficultyData data = DifficultyData.get(Minecraft.getMinecraft().player.world);
-		if(data != null){
-			GlStateManager.pushMatrix();
-			FontRenderer font = Minecraft.getMinecraft().fontRenderer;
-			float scale = ConfigHandler.scale;
-			GlStateManager.scale(scale, scale, scale);
-			GlStateManager.color(1, 1, 1, 1);
-			GlStateManager.disableLighting();
-			//int x = ConfigHandler.gui.guiX+e.getResolution().getScaledWidth()/2;
-			//int y = ConfigHandler.gui.guiY+e.getResolution().getScaledHeight();
-			font.drawString(ConfigHandler.color + "Difficulty " + String.format(java.util.Locale.US, "%.1f", data.getDifficulty()), ConfigHandler.guiX, ConfigHandler.guiY, 0);
-			GlStateManager.popMatrix();
-		}
-	}
 }

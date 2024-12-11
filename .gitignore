@@ -18,3 +18,5 @@ build
 
 # things
 .DS_Store
+
+.idea
